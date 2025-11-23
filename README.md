@@ -1,0 +1,1 @@
+Install: npm i; run: npm run dev; place background.png into public/images; replace service images.

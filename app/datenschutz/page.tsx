@@ -1,31 +1,10 @@
-"use client";
 
-import Section from "@/components/Section";
-
-export default function DatenschutzPage() {
+export default function Datenschutz() {
   return (
-    <Section id="datenschutz" title="Datenschutzerklärung">
-      <div className="card p-6 md:p-8 space-y-4 text-lg leading-relaxed">
-        <p>
-          Diese Website erhebt und verarbeitet personenbezogene Daten ausschließlich
-          im Rahmen der gesetzlichen Bestimmungen (DSGVO).
-        </p>
-
-        <p>
-          Verantwortlich: <strong>Ana Casarotti</strong>, Köln · kontakt@ana-casarotti.de
-        </p>
-
-        <p>
-          Beim Besuch der Website werden automatisch technische Daten erfasst
-          (Server-Logfiles). Diese Daten dienen ausschließlich der technischen
-          Bereitstellung.
-        </p>
-
-        <p>
-          Es werden keine Cookies zu Werbezwecken eingesetzt und keine Daten an
-          Dritte weitergegeben.
-        </p>
-      </div>
-    </Section>
+    <div className="mx-auto max-w-4xl px-6 py-20">
+      <h1 className="font-serif text-3xl text-green-vitality">Datenschutzerklärung</h1>
+      <p className="mt-4">Diese Website verarbeitet keine personenbezogenen Daten außer den technisch notwendigen Verbindungsdaten. Bei Kontaktaufnahme per Telefon oder WhatsApp gelten zusätzlich die Datenschutzbestimmungen der jeweiligen Anbieter.</p>
+      <p className="mt-4">Verantwortliche Stelle: Ana Casarotti, Hausbesuche in Köln und Umgebung – Anschrift auf Anfrage.</p>
+    </div>
   );
 }
