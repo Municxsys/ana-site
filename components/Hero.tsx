@@ -64,11 +64,19 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
-          >
-            <Button asChild>
-              <a href="#kontakt">Termin anfragen</a>
-            </Button>
-
+          > 
+           <a
+  href="#kontakt"
+  className="
+    inline-flex items-center justify-center
+    rounded-2xl px-6 py-3 text-sm sm:text-base font-semibold
+    bg-green-harmony text-neutral-sand shadow-soft
+    hover:bg-green-vitality transition
+  "
+>
+  Termin anfragen
+</a>
+             
             <a
               href="https://wa.me/4915755598937"
               target="_blank"
