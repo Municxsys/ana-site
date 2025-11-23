@@ -1,1 +1,32 @@
-import { ReactNode } from 'react';export default function Section({id,title,subtitle,children}:{id:string,title?:string,subtitle?:string,children:ReactNode}){return(<section id={id} className='mx-auto max-w-6xl px-6 py-16 md:py-20'>{title&&<h2 className='font-serif text-3xl md:text-4xl text-green-vitality'>{title}</h2>}{subtitle&&<p className='mt-2 text-ink/70'>{subtitle}</p>}<div className='mt-8'>{children}</div></section>);}
+import { ReactNode } from "react";
+
+export default function Section({
+  id,
+  title,
+  subtitle,
+  children,
+}: {
+  id: string;
+  title?: string;
+  subtitle?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section id={id} className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+      
+      {title && (
+        <h2 className="font-serif text-3xl md:text-4xl text-green-vitality">
+          {title}
+        </h2>
+      )}
+
+      {subtitle && (
+        <p className="mt-2 text-ink/70 max-w-2xl">
+          {subtitle}
+        </p>
+      )}
+
+      <div className="mt-8">{children}</div>
+    </section>
+  );
+}
