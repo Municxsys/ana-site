@@ -8,7 +8,7 @@ export default function Card({ title, price, children, img } : { title: string, 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="rounded-[2rem] bg-white/90 backdrop-blur-sm p-6 shadow-card border border-green-vitality/10 hover:shadow-glowGold transition-all"
+      className="rounded-[2rem] bg-neutral-sand text-green-vitality backdrop-blur-sm p-6 shadow-card border border-green-vitality/10 hover:shadow-glowGold transition-all"
       style={{ borderRadius: "2rem" }}
     >
       {img && (<div className="overflow-hidden rounded-[2rem]"><img src={img} alt={title} className="w-full h-48 object-cover" /></div>)}
