@@ -14,24 +14,29 @@ export default function Hero() {
         px-4
       "
     >
-      {/* ganz leichtes Overlay für weichen, soften Look */}
-      <div className="absolute inset-0 bg-neutral-sand/10" />
+      {/* Overlay klar unter allem halten */}
+      <div className="absolute inset-0 bg-neutral-sand/10 z-0 pointer-events-none" />
 
       <motion.div
-        className="relative z-10 w-full max-w-3xl mx-auto text-center flex flex-col items-center gap-6"
+        className="
+          relative z-10 w-full max-w-3xl mx-auto
+          text-center flex flex-col items-center gap-6
+        "
         initial={{ opacity: 0, y: 32 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {/* Nur für Screenreader – visuell macht das Logo die Überschrift */}
+        {/* Nur für Screenreader – SEO-H1 */}
         <h1 className="sr-only">
           Ana Casarotti – Maniküre, Pediküre &amp; Medizinische Fußpflege in Köln
         </h1>
 
-        {/* Logo wie in deiner PNG-Vorlage */}
-        <Logo />
+        {/* Logo SICHER über Overlay */}
+        <div className="relative z-20 flex flex-col items-center">
+          <Logo />
+        </div>
 
-        {/* Button wie im Design: heller, runder CTA */}
+        {/* Button */}
         <motion.a
           href="/kontakt"
           className="
@@ -48,7 +53,7 @@ export default function Hero() {
           Jetzt Termin vereinbaren
         </motion.a>
 
-        {/* Optional: kleiner Zusatz unter dem Button */}
+        {/* Unterzeile */}
         <motion.p
           className="mt-3 text-xs sm:text-sm text-neutral-sand/90 max-w-md"
           initial={{ opacity: 0 }}
