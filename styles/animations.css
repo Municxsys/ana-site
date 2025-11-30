@@ -1,1 +1,70 @@
-@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}.floaty{animation:floaty 6s ease-in-out infinite;}
+/* Sanftes Fade-Up */
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+/* Varianten mit Delay */
+.fade-up-delay-1 {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+.fade-up-delay-2 {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.fade-up-delay-3 {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out forwards;
+  animation-delay: 0.45s;
+}
+
+/* Speziell für Cards (etwas weicher + leicht scale) */
+@keyframes card-in {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-in {
+  opacity: 0;
+  animation: card-in 0.7s ease-out forwards;
+}
+
+.card-in-delay-1 {
+  opacity: 0;
+  animation: card-in 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+.card-in-delay-2 {
+  opacity: 0;
+  animation: card-in 0.7s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.card-in-delay-3 {
+  opacity: 0;
+  animation: card-in 0.7s ease-out forwards;
+  animation-delay: 0.45s;
+}
