@@ -5,44 +5,40 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-   <section
-  id="home"
-  className="relative min-h-screen w-full flex items-center justify-center px-4"
-  style={{
-    background: `
-      radial-gradient(circle at top left,
-        #b9c7a6 0%,
-        #889b7a 25%,
-        #657b5b 50%,
-        #4a6243 75%,
-        #324d2f 100%
-      )
-    `,
-  }}
->
-
-      {/* weiches Overlay, damit das Logo gut lesbar bleibt */}
+    <section
+      id="home"
+      className="
+        relative w-full min-h-screen
+        flex items-center justify-center
+        bg-hero-radial
+        px-4
+      "
+    >
+      {/* optional leichtes Overlay, für weichen Look */}
       <div className="absolute inset-0 bg-neutral-sand/10 z-0 pointer-events-none" />
 
       <motion.div
         className="
           relative z-10 w-full max-w-4xl mx-auto
-          text-center flex flex-col items-center gap-6
+          flex flex-col items-center gap-6 text-center
         "
         initial={{ opacity: 0, y: 32 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
+        {/* SEO-H1 nur für Screenreader */}
         <h1 className="sr-only">
           Ana Casarotti – Maniküre, Pediküre &amp; Medizinische Fußpflege in Köln
+          und Umgebung
         </h1>
 
-        {/* Icon im Kreis */}
+        {/* ICON IM KREIS – sauber formatiert */}
         <motion.div
           className="
             relative h-28 w-28 sm:h-32 sm:w-32
             rounded-full border border-neutral-sand/70
-            bg-[#4a6243]/60 flex items-center justify-center
+            bg-hero-olive/30  /* falls dir das zu dunkel ist, gern ändern */
+            flex items-center justify-center
             shadow-soft
           "
           initial={{ opacity: 0, scale: 0.9 }}
@@ -53,11 +49,11 @@ export default function Hero() {
             src="/images/ana-logo-icon.png"
             alt="Ana Casarotti Logo"
             fill
-            className="object-contain p-3"
+            className="object-contain p-4"
           />
         </motion.div>
 
-        {/* Wortmarke + Unterzeile als PNG */}
+        {/* Wortmarke + Unterzeile */}
         <motion.div
           className="relative w-[260px] sm:w-[360px] md:w-[420px]"
           initial={{ opacity: 0, y: 10 }}
@@ -81,7 +77,7 @@ export default function Hero() {
             mt-4 inline-flex items-center justify-center
             rounded-full px-10 py-3
             text-sm sm:text-base font-semibold
-            bg-neutral-sand text-[#324d2f]
+            bg-neutral-sand text-green-vitality
             shadow-card hover:bg-neutral-sand/90 transition
           "
           initial={{ opacity: 0, y: 8 }}
@@ -91,6 +87,7 @@ export default function Hero() {
           Jetzt Termin vereinbaren
         </motion.a>
 
+        {/* Unterzeile */}
         <motion.p
           className="mt-3 text-xs sm:text-sm text-neutral-sand/90 max-w-lg"
           initial={{ opacity: 0 }}
