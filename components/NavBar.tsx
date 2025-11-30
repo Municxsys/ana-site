@@ -21,15 +21,20 @@ export default function NavBar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition 
-        ${scrolled ? "backdrop-blur bg-neutral-sand/70 border-b border-green-vitality/10" : ""}
+      className={`
+        fixed inset-x-0 top-0 z-50 transition-all duration-300
+        ${scrolled
+          ? "backdrop-blur bg-neutral-sand/70 border-b border-green-harmony/20 shadow-soft"
+          : "bg-transparent"
+        }
       `}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        {/* Logo / Brand */}
+
+        {/* Brand */}
         <Link
           href="/"
-          className="font-serif text-xl text-green-vitality tracking-wide"
+          className="font-serif text-xl text-green-vitality tracking-wide hover:text-green-harmony transition"
         >
           Ana Casarotti
         </Link>
@@ -40,12 +45,16 @@ export default function NavBar() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-ink/80 hover:text-green-harmony transition"
+              className="
+                text-ink/80 hover:text-green-vitality transition
+                font-medium tracking-wide
+              "
             >
               {l.label}
             </Link>
           ))}
         </div>
+
       </nav>
     </header>
   );
