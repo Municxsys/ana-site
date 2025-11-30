@@ -5,14 +5,22 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative w-full min-h-screen flex items-center justify-center px-4"
-      style={{
-        background:
-          "linear-gradient(to bottom, #b9c7a6, #889b7a, #657b5b, #4a6243, #324d2f)",
-      }}
-    >
+   <section
+  id="home"
+  className="relative min-h-screen w-full flex items-center justify-center px-4"
+  style={{
+    background: `
+      radial-gradient(circle at top left,
+        #b9c7a6 0%,
+        #889b7a 25%,
+        #657b5b 50%,
+        #4a6243 75%,
+        #324d2f 100%
+      )
+    `,
+  }}
+>
+
       {/* weiches Overlay, damit das Logo gut lesbar bleibt */}
       <div className="absolute inset-0 bg-neutral-sand/10 z-0 pointer-events-none" />
 
