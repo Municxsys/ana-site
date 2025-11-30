@@ -32,13 +32,13 @@ export default function Hero() {
           und Umgebung
         </h1>
 
-        {/* ICON IM KREIS – sauber formatiert */}
+        {/* ICON sauber formatiert – kein fill, keine Verzerrung */}
         <motion.div
           className="
-            relative h-28 w-28 sm:h-32 sm:w-32
+            relative flex items-center justify-center
+            h-40 w-40 sm:h-44 sm:w-44
             rounded-full border border-neutral-sand/70
-            bg-hero-olive/30  /* falls dir das zu dunkel ist, gern ändern */
-            flex items-center justify-center
+            bg-hero-olive/30
             shadow-soft
           "
           initial={{ opacity: 0, scale: 0.9 }}
@@ -48,8 +48,10 @@ export default function Hero() {
           <Image
             src="/images/ana-logo-icon.png"
             alt="Ana Casarotti Logo"
-            fill
-            className="object-contain p-4"
+            width={1599}
+            height={899}
+            priority
+            className="w-[80%] h-auto select-none"
           />
         </motion.div>
 
