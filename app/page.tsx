@@ -33,6 +33,7 @@ export default function Page() {
       <Kontakt />
       <Footer />
 
+      {/* SEO JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
