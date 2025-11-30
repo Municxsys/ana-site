@@ -14,7 +14,7 @@ export default function Hero() {
         px-4
       "
     >
-      {/* optional leichtes Overlay, für weichen Look */}
+      {/* weiches Overlay */}
       <div className="absolute inset-0 bg-neutral-sand/10 z-0 pointer-events-none" />
 
       <motion.div
@@ -32,30 +32,24 @@ export default function Hero() {
           und Umgebung
         </h1>
 
-        {/* ICON sauber formatiert – kein fill, keine Verzerrung */}
+        {/* ICON wie im Flyer: PNG selbst, kein extra Kreis */}
         <motion.div
-          className="
-            relative flex items-center justify-center
-            h-40 w-40 sm:h-44 sm:w-44
-            rounded-full border border-neutral-sand/70
-            bg-hero-olive/30
-            shadow-soft
-          "
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
+          className="relative w-[190px] sm:w-[230px] md:w-[260px]"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
         >
           <Image
             src="/images/ana-logo-icon.png"
-            alt="Ana Casarotti Logo"
+            alt="Ana Casarotti Icon"
             width={1599}
             height={899}
             priority
-            className="w-[80%] h-auto select-none"
+            className="w-full h-auto select-none"
           />
         </motion.div>
 
-        {/* Wortmarke + Unterzeile */}
+        {/* Wortmarke + Unterzeile als PNG */}
         <motion.div
           className="relative w-[260px] sm:w-[360px] md:w-[420px]"
           initial={{ opacity: 0, y: 10 }}
@@ -68,7 +62,7 @@ export default function Hero() {
             width={420}
             height={240}
             priority
-            className="w-full h-auto"
+            className="w-full h-auto select-none"
           />
         </motion.div>
 
