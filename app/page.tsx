@@ -1,42 +1,52 @@
-// app/page.tsx
-import NavBar from "@/components/NavBar";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Footer from "@/components/Footer";
+import "../styles/globals.css";
+import "../styles/animations.css";
+import type { Metadata } from "next";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 
-const schemaOrg = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Ana Casarotti – Medizinische Fußpflege & Kosmetik",
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://anacasarotti.de"),
+  title: {
+    default:
+      "Ana Casarotti – Medizinische Fußpflege & Kosmetik Köln (Hausbesuche)",
+    template: "%s | Ana Casarotti",
+  },
   description:
-    "Mobile medizinische Fußpflege, Maniküre & Pediküre in Köln und Umgebung. Hausbesuche mit Herz und Fachkompetenz.",
-  url: "https://anacasarotti.de",
-  telephone: "+49 1575 5598937",
-  sameAs: ["https://www.instagram.com/ana_casarotti"],
-  areaServed: "Köln und Umgebung",
-  serviceType: [
-    "Medizinische Fußpflege",
-    "Kosmetische Fußpflege",
-    "Pediküre",
-    "Maniküre",
-  ],
-} as const;
+    "Mobile medizinische Fußpflege, Maniküre & Pediküre in Köln und Umgebung. Hausbesuche mit Herz, Fachkompetenz und Hygienestandard.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    title:
+      "Ana Casarotti – Medizinische Fußpflege & Kosmetik Köln (Hausbesuche)",
+    description:
+      "Mobile medizinische Fußpflege, Maniküre & Pediküre in Köln und Umgebung. Hausbesuche mit Herz, Fachkompetenz und Hygienestandard.",
+    url: "/",
+    siteName: "Ana Casarotti",
+    images: ["/images/og-preview.jpg"],
+  },
+};
 
-export const dynamic = "force-static";
-
-export default function Page() {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <main>
-      <NavBar />
-      <Hero />
-      <About />
-      <Footer />
-
-      {/* SEO JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
-      />
-    </main>
+    <html lang="de">
+      <body className={`${dmSans.variable} ${playfair.variable} antialiased`}>
+        {children}
+      </body>
+    </html>
   );
 }

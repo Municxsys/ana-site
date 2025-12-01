@@ -14,7 +14,7 @@
   --ana-green-deep: #10320d;      /* 4. Reihe, viertes Feld */
   --ana-green-edge: #031f01;      /* 4. Reihe, letztes Feld */
   --ana-cream: #f7f2e7;           /* Gutschein-Rückseite, angenähert */
-  --ana-accent-gold: #ae6f38;     /* Braune Reihe, Mitte (für Buttons etc., NICHT Navi) */
+  --ana-accent-gold: #ae6f38ff;     /* Braune Reihe, Mitte (für Buttons etc., NICHT Navi) */
 
   --ana-text-light: #fdfaf5;
 
