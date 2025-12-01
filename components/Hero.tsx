@@ -103,7 +103,7 @@ export default function Hero() {
           {/* Wellness – ab sm sichtbar, leicht nach unten versetzt */}
           <div className="relative hidden sm:block flex-1 aspect-[3/4] rounded-3xl overflow-hidden shadow-card bg-[var(--ana-green-soft)]/35 translate-y-6">
             <Image
-              src="/images/hero-wellness.jpg"
+              src="/images/wellness.jpg"
               alt="Wellness Atmosphäre mit Handtüchern und Kerzen"
               fill
               className="object-cover"
