@@ -1,6 +1,7 @@
 // app/page.tsx
 import NavBar from "@/components/NavBar";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 import Footer from "@/components/Footer";
 
 const schemaOrg = {
@@ -28,6 +29,7 @@ export default function Page() {
     <main>
       <NavBar />
       <Hero />
+      <About />
       <Footer />
 
       {/* SEO JSON-LD */}
