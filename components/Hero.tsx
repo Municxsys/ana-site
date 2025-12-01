@@ -34,7 +34,7 @@ export default function Hero() {
 
       {/* ICON wie im Canva-Flyer – kleines PNG ohne Kreis */}
 <motion.div
-  className="relative w-[90px] sm:w-[110px] md:w-[130px]"
+  className="relative w-[70px] sm:w-[85px] md:w-[90px]"
   initial={{ opacity: 0, y: 10 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
@@ -42,10 +42,10 @@ export default function Hero() {
   <Image
     src="/images/ana-logo-icon.png"
     alt="Ana Casarotti Icon"
-    width={130}
-    height={130}
+    width={90}
+    height={90}
     priority
-    className="w-full h-auto select-none object-contain"
+    className="w-full h-auto select-none"
   />
 </motion.div>
 
