@@ -2,29 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ==========
-   ANA BRAND
-   ========== */
+/* ===========================================================
+   ANA CASAROTTI BRAND – aus PDF extrahiert & farbkalibriert
+   =========================================================== */
 
 :root {
-  /* Palette aus Brandbook */
-  --ana-green-soft: #8f9e72;      /* 2. Reihe rechts */
-  --ana-green-soft-2: #a6b588;
-  --ana-green-dark: #295824;      /* 4. Reihe, zweites Feld */
-  --ana-green-deep: #10320d;      /* 4. Reihe, viertes Feld */
-  --ana-green-edge: #031f01;      /* 4. Reihe, letztes Feld */
-  --ana-cream: #f7f2e7;           /* Gutschein-Rückseite, angenähert */
-  --ana-accent-gold: #ae6f38ff;     /* Braune Reihe, Mitte (für Buttons etc., NICHT Navi) */
+  /* Grüntöne aus der Gutschein-Vorderseite */
+  --ana-green-soft: #8f9e72;       /* warmes Pastellgrün (oben links Verlauf) */
+  --ana-green-soft-2: #a6b588;     /* hellere Mitte */
+  --ana-green-dark: #295824;       /* dominanter Hintergrundton */
+  --ana-green-deep: #10320d;       /* tiefer Schatten */
+  --ana-green-edge: #031f01;       /* fast schwarz-grün */
 
-  --ana-text-light: #fdfaf5;
+  /* Creme-Ton aus Gutscheinrückseite */
+  --ana-cream: #f7f2e7;
 
-  /* helle Hover-Farbe für Navigation */
+  /* Akzentton aus brauner Reihe (Buttons etc.) */
+  --ana-accent-gold: #ae6f38;
+
+  /* helle Farbe für Navigation / Hero Text / Subtitles */
   --ana-nav-hover: #eafacb;
+
+  /* Textfarbe auf dunklem Grün */
+  --ana-text-light: #fdfaf5;
 }
 
-/* ==========
-   BASISLAYOUT & FONTS
-   ========== */
+/* ===========================================================
+   BASE + TYPOGRAFIE
+   =========================================================== */
 
 html,
 body,
@@ -32,43 +37,38 @@ body,
   height: 100%;
 }
 
-/* DM Sans kommt als CSS-Variable --font-body aus layout.tsx
-   Playfair Display als --font-heading */
 body {
   margin: 0;
-  font-family: var(--font-body, system-ui, -apple-system, BlinkMacSystemFont,
-      "SF Pro Text", "Segoe UI", sans-serif);
+  font-family: var(--font-body, system-ui, sans-serif);
   color: var(--ana-text-light);
   background-color: var(--ana-green-dark);
+  overflow-x: hidden;
 }
 
-/* Hilfsklassen, falls du explizit steuern willst */
+/* Klassen explizit für Komponenten */
 .body-sans {
-  font-family: var(--font-body, system-ui, -apple-system, BlinkMacSystemFont,
-      "SF Pro Text", "Segoe UI", sans-serif);
+  font-family: var(--font-body, system-ui, sans-serif);
 }
 
 .heading-serif {
   font-family: var(--font-heading, "Times New Roman", serif);
 }
 
-/* ==========
-   HERO BG – möglichst nah an der Gutschein-Vorderseite
-   ========== */
+/* ===========================================================
+   HERO BACKGROUND – 1:1 an Gutschein Vorderseite angeglichen
+   =========================================================== */
 
 .bg-hero-radial {
   background-color: var(--ana-green-dark);
   background-image:
-    /* heller Schein unten rechts */
     radial-gradient(
-      circle at 85% 95%,
+      circle at 85% 90%,
       #eafacb 0%,
       var(--ana-green-soft-2) 32%,
       transparent 70%
     ),
-    /* weicher Verlauf obere Mitte / links */
     radial-gradient(
-      circle at 20% 0%,
+      circle at 15% 0%,
       var(--ana-green-soft) 0%,
       var(--ana-green-dark) 46%,
       var(--ana-green-deep) 78%,
@@ -78,50 +78,55 @@ body {
   background-attachment: fixed;
 }
 
-/* Karten-Schatten wie auf der Seite */
+/* ===========================================================
+   SHADOWS
+   =========================================================== */
 
 .shadow-card {
   box-shadow: 0 26px 55px rgba(0, 0, 0, 0.45);
 }
 
-/* ==========
-   NAVIGATION
-   ========== */
+/* ===========================================================
+   NAVIGATION – Desktop & Mobile
+   =========================================================== */
 
 .nav-link {
   position: relative;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-size: 0.72rem;
-  color: var(--ana-cream);           /* Standard: hell/creme */
+  font-size: 0.74rem;
+  color: var(--ana-cream);
+  transition: color 0.2s ease;
 }
 
-/* Unterstreichung */
+/* Dezente Unterlinie */
 .nav-link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -0.45rem;
+  bottom: -0.42rem;
   width: 0;
   height: 1px;
-  background: rgba(250, 250, 250, 0.6);
+  background: rgba(255, 255, 255, 0.55);
   transition: width 0.22s ease;
 }
 
 .nav-link:hover::after,
-.nav-link[aria-current="page"]::after {
+.nav-active::after {
   width: 100%;
 }
 
-/* Textfarbe beim Hover – helles Grün/Cream statt Terracotta */
-.nav-link:hover {
-  color: var(--ana-nav-hover);
+/* Hover/Active Farbe — kein Terracotta mehr */
+.nav-link:hover,
+.nav-active {
+  color: var(--ana-nav-hover) !important;
 }
 
-/* ==========
+/* ===========================================================
    ANIMATIONEN
-   ========== */
+   =========================================================== */
 
+/* Floaty (Logo sanft schwebend) */
 @keyframes floaty {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -146,7 +151,6 @@ body {
 }
 
 /* Fade-Up */
-
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -181,8 +185,7 @@ body {
   animation-delay: 0.45s;
 }
 
-/* Cards mit weichem Einstieg */
-
+/* Card-In (weicher Slide-Fade) */
 @keyframes card-in {
   0% {
     opacity: 0;
