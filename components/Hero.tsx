@@ -32,28 +32,23 @@ export default function Hero() {
           und Umgebung
         </h1>
 
-        {/* ICON IM KREIS – final richtig proportioniert */}
+      {/* ICON wie im Canva-Flyer – kleines PNG ohne Kreis */}
 <motion.div
-  className="
-    relative h-32 w-32
-    rounded-full border border-neutral-sand/70
-    bg-hero-olive/20
-    flex items-center justify-center
-    shadow-soft
-  "
-  initial={{ opacity: 0, scale: 0.95 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
+  className="relative w-[90px] sm:w-[110px] md:w-[130px]"
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
 >
   <Image
     src="/images/ana-logo-icon.png"
-    alt="Ana Casarotti Logo"
-    width={128}
-    height={128}
-    className="object-contain p-2"
+    alt="Ana Casarotti Icon"
+    width={130}
+    height={130}
     priority
+    className="w-full h-auto select-none object-contain"
   />
 </motion.div>
+
 
         {/* Wortmarke + Unterzeile als PNG */}
         <motion.div
