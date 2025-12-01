@@ -1,16 +1,16 @@
-<<<<<<< HEAD
+/* 🎈 Floating Icon / Logo */
 @keyframes floaty {
   0% {
     transform: translateY(0) rotate(0deg);
   }
-  25% {
-    transform: translateY(-6px) rotate(0.5deg);
+  20% {
+    transform: translateY(-6px) rotate(0.4deg);
   }
-  50% {
-    transform: translateY(-2px) rotate(-0.5deg);
+  45% {
+    transform: translateY(-3px) rotate(-0.4deg);
   }
-  75% {
-    transform: translateY(-5px) rotate(0.4deg);
+  70% {
+    transform: translateY(-5px) rotate(0.3deg);
   }
   100% {
     transform: translateY(0) rotate(0deg);
@@ -18,11 +18,12 @@
 }
 
 .floaty {
-  animation: floaty 7s ease-in-out infinite;
+  animation: floaty 7.5s ease-in-out infinite;
   will-change: transform;
 }
-=======
-/* Sanftes Fade-Up */
+
+
+/* 🌟 Sanfter Fade-Up */
 @keyframes fade-up {
   0% {
     opacity: 0;
@@ -39,7 +40,6 @@
   animation: fade-up 0.7s ease-out forwards;
 }
 
-/* Varianten mit Delay */
 .fade-up-delay-1 {
   opacity: 0;
   animation: fade-up 0.7s ease-out forwards;
@@ -58,38 +58,40 @@
   animation-delay: 0.45s;
 }
 
-/* Speziell für Cards (etwas weicher + leicht scale) */
+
+/* 📦 Card-Entrance (weicher & hochwertiger) */
 @keyframes card-in {
   0% {
     opacity: 0;
-    transform: translateY(24px) scale(0.98);
+    transform: translateY(28px) scale(0.97);
+    filter: blur(2px);
   }
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
+    filter: blur(0px);
   }
 }
 
 .card-in {
   opacity: 0;
-  animation: card-in 0.7s ease-out forwards;
+  animation: card-in 0.75s ease-out forwards;
 }
 
 .card-in-delay-1 {
   opacity: 0;
-  animation: card-in 0.7s ease-out forwards;
+  animation: card-in 0.75s ease-out forwards;
   animation-delay: 0.15s;
 }
 
 .card-in-delay-2 {
   opacity: 0;
-  animation: card-in 0.7s ease-out forwards;
+  animation: card-in 0.75s ease-out forwards;
   animation-delay: 0.3s;
 }
 
 .card-in-delay-3 {
   opacity: 0;
-  animation: card-in 0.7s ease-out forwards;
+  animation: card-in 0.75s ease-out forwards;
   animation-delay: 0.45s;
 }
->>>>>>> df7bfd015064eb2c39d1b6686e3f2f44bab0b0e9
