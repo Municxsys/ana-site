@@ -1,62 +1,135 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Logo from "@/components/Logo";
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <section
       id="home"
       className="
-        relative min-h-screen w-full
-        flex items-center justify-center
-        bg-gradient-to-b from-green-serenity via-green-harmony/40 to-green-vitality
-        px-4
+        relative w-full min-h-screen
+        bg-hero-radial
+        px-4 pt-24 pb-12
+        flex items-center
       "
     >
-      {/* ganz leichtes Overlay für weichen, soften Look */}
-      <div className="absolute inset-0 bg-neutral-sand/10" />
+      {/* leichtes Overlay für soften Look */}
+      <div className="absolute inset-0 bg-neutral-sand/10 z-0 pointer-events-none" />
 
       <motion.div
-        className="relative z-10 w-full max-w-3xl mx-auto text-center flex flex-col items-center gap-6"
+        className="
+          relative z-10 w-full max-w-6xl mx-auto
+          flex flex-col md:flex-row items-center
+          gap-10 md:gap-16
+        "
         initial={{ opacity: 0, y: 32 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {/* Nur für Screenreader – visuell macht das Logo die Überschrift */}
-        <h1 className="sr-only">
-          Ana Casarotti – Maniküre, Pediküre &amp; Medizinische Fußpflege in Köln
-        </h1>
-
-        {/* Logo wie in deiner PNG-Vorlage */}
-        <Logo />
-
-        {/* Button wie im Design: heller, runder CTA */}
-        <motion.a
-          href="/kontakt"
+        {/* LINKER BLOCK: Logo, Wortmarke, Button, Text */}
+        <div
           className="
-            mt-2 inline-flex items-center justify-center
-            rounded-full px-10 py-3
-            text-sm sm:text-base font-semibold
-            bg-neutral-sand text-green-vitality
-            shadow-card hover:bg-neutral-sand/90 transition
+            flex-1
+            flex flex-col items-center md:items-start
+            text-center md:text-left
+            gap-4
           "
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5, ease: 'easeOut' }}
         >
-          Jetzt Termin vereinbaren
-        </motion.a>
+          {/* SEO-H1 nur für Screenreader */}
+          <h1 className="sr-only">
+            Ana Casarotti – Maniküre, Pediküre &amp; Medizinische Fußpflege in
+            Köln und Umgebung
+          </h1>
 
-        {/* Optional: kleiner Zusatz unter dem Button */}
-        <motion.p
-          className="mt-3 text-xs sm:text-sm text-neutral-sand/90 max-w-md"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.45, duration: 0.6 }}
+          {/* kleines Icon wie im Canva-Design */}
+          <motion.div
+            className="relative w-[70px] sm:w-[85px] md:w-[90px]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
+          >
+            <Image
+              src="/images/ana-logo-icon.png"
+              alt="Ana Casarotti Icon"
+              width={90}
+              height={90}
+              priority
+              className="w-full h-auto select-none"
+            />
+          </motion.div>
+
+          {/* Wortmarke + Unterzeile als PNG */}
+          <motion.div
+            className="relative w-[260px] sm:w-[360px] md:w-[420px]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
+          >
+            <Image
+              src="/images/ana-logo-wordmark.png"
+              alt="Ana Casarotti – Maniküre, Pediküre & Medizinische Fußpflege"
+              width={420}
+              height={240}
+              priority
+              className="w-full h-auto select-none"
+            />
+          </motion.div>
+
+          {/* Button */}
+          <motion.a
+            href="/kontakt"
+            className="
+              mt-2 inline-flex items-center justify-center
+              rounded-full px-10 py-3
+              text-sm sm:text-base font-semibold
+              bg-neutral-sand text-green-vitality
+              shadow-card hover:bg-neutral-sand/90 transition
+            "
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+          >
+            Jetzt Termin vereinbaren
+          </motion.a>
+
+          {/* Unterzeile */}
+          <motion.p
+            className="mt-2 text-xs sm:text-sm text-neutral-sand/90 max-w-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.55, duration: 0.6 }}
+          >
+            Mobile medizinische Fußpflege, Maniküre &amp; Pediküre in Köln und
+            Umgebung.
+          </motion.p>
+        </div>
+
+        {/* RECHTER BLOCK: Foto im Kittel */}
+        <motion.div
+          className="
+            flex-1 w-full max-w-sm
+          "
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.45, duration: 0.6, ease: "easeOut" }}
         >
-          Mobile medizinische Fußpflege, Maniküre &amp; Pediküre in Köln und Umgebung.
-        </motion.p>
+          <div
+            className="
+              relative w-full
+              aspect-[3/4]
+              rounded-3xl overflow-hidden
+              shadow-card bg-green-vitality/30
+            "
+          >
+            <Image
+              src="/images/hero-ana-uniform.jpg"
+              alt="Ana Casarotti in Berufsbekleidung"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

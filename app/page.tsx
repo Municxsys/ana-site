@@ -1,7 +1,7 @@
+// app/page.tsx
 import NavBar from "@/components/NavBar";
 import Hero from "@/components/Hero";
-import Leistungen from "@/components/Leistungen";
-import Kontakt from "@/components/Kontakt";
+import About from "@/components/About";
 import Footer from "@/components/Footer";
 
 const schemaOrg = {
@@ -29,10 +29,10 @@ export default function Page() {
     <main>
       <NavBar />
       <Hero />
-      <Leistungen />
-      <Kontakt />
+      <About />
       <Footer />
 
+      {/* SEO JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
