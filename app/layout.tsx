@@ -1,42 +1,57 @@
-// app/layout.tsx
 import "../styles/globals.css";
 import "../styles/animations.css";
+
 import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 
-const bodyFont = DM_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   variable: "--font-body",
+  display: "swap",
 });
 
-const headingFont = Playfair_Display({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
   variable: "--font-heading",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://anacasarotti.de"),
   title: {
     default:
-      "Ana Casarotti – Medizinische Fußpflege & Kosmetik Köln (Hausbesuche)",
+      "Ana Casarotti – Medizinische Fußpflege, Maniküre & Pediküre Köln",
     template: "%s | Ana Casarotti",
   },
   description:
     "Mobile medizinische Fußpflege, Maniküre & Pediküre in Köln und Umgebung. Hausbesuche mit Herz, Fachkompetenz und Hygienestandard.",
-  alternates: {
-    canonical: "/",
-  },
+  keywords: [
+    "Fußpflege Köln",
+    "medizinische Fußpflege",
+    "Pediküre Köln",
+    "Maniküre Köln",
+    "mobile Fußpflege",
+  ],
   openGraph: {
     type: "website",
-    title:
-      "Ana Casarotti – Medizinische Fußpflege & Kosmetik Köln (Hausbesuche)",
-    description:
-      "Mobile medizinische Fußpflege, Maniküre & Pediküre in Köln und Umgebung. Hausbesuche mit Herz, Fachkompetenz und Hygienestandard.",
-    url: "/",
+    locale: "de_DE",
+    url: "https://anacasarotti.de",
     siteName: "Ana Casarotti",
-    images: ["/images/og-preview.jpg"],
+    title:
+      "Ana Casarotti – Medizinische Fußpflege, Maniküre & Pediküre Köln",
+    description:
+      "Mobile medizinische Fußpflege, Maniküre & Pediküre in Köln und Umgebung.",
+    images: [
+      {
+        url: "/images/og-preview.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ana Casarotti – Fußpflege & Kosmetik",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 
@@ -47,8 +62,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      {/* Body bekommt beide Font-Variablen */}
-      <body className={`${bodyFont.variable} ${headingFont.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${playfair.variable} antialiased`}>
         {children}
       </body>
     </html>
