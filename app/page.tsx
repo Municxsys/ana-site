@@ -1,12 +1,15 @@
+import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 
 export const dynamic = "force-static";
 
 export default function Page() {
   return (
-    <main>
+    <main className="relative min-h-screen overflow-x-hidden">
+      <NavBar />
       <Hero />
+      <Footer />
     </main>
   );
 }
-
