@@ -1,16 +1,19 @@
+// app/layout.tsx
 import "../styles/globals.css";
 import "../styles/animations.css";
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 
-const inter = Inter({
+const bodyFont = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
 });
 
-const playfair = Playfair_Display({
+const headingFont = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["400", "600", "700"],
+  variable: "--font-heading",
 });
 
 export const metadata: Metadata = {
@@ -44,7 +47,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+      {/* Body bekommt beide Font-Variablen */}
+      <body className={`${bodyFont.variable} ${headingFont.variable} antialiased`}>
         {children}
       </body>
     </html>
