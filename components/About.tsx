@@ -16,7 +16,7 @@ export default function About() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <h2 className="font-serif text-2xl sm:text-3xl text-green-vitality mb-4">
+          <h2 className="font-raleway text-2xl sm:text-3xl text-neutral-sand mb-4">
             Über mich
           </h2>
 
@@ -61,3 +61,4 @@ export default function About() {
     </section>
   );
 }
+
