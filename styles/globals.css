@@ -2,53 +2,191 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Root-Fonts aus layout.tsx */
+/* ==========
+   ANA BRAND
+   ========== */
+
 :root {
-  --font-inter: Inter, system-ui, Arial, sans-serif;
-  --font-playfair: "Playfair Display", serif;
+  /* Palette aus Brandbook */
+  --ana-green-soft: #8f9e72;   /* 2. Reihe rechts */
+  --ana-green-soft-2: #a6b588;
+  --ana-green-dark: #295824;   /* 4. Reihe, zweites Feld */
+  --ana-green-deep: #10320d;   /* 4. Reihe, viertes Feld */
+  --ana-green-edge: #031f01;   /* 4. Reihe, letztes Feld */
+  --ana-cream: #f7f2e7;        /* Gutschein-Rückseite, angenähert */
+  --ana-accent-gold: #ae6f38;  /* Braune Reihe, Mitte */
+
+  --ana-text-light: #fdfaf5;
 }
 
-/* Body-Grundlayout */
+/* Basislayout */
+
+html,
+body,
+:root {
+  height: 100%;
+}
+
 body {
-  font-family: var(--font-inter);
-  background-color: #F2EFE9; /* neutral-sand */
-  color: #333;               /* ink */
   margin: 0;
-  padding: 0;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color: var(--ana-text-light);
+  background-color: var(--ana-green-dark);
 }
 
-/* Headings – Branding */
-h1, h2, h3, h4, h5 {
-  font-family: var(--font-playfair);
-  color: #1C3A19; /* green-vitality */
-  font-weight: 600;
-  margin: 0;
+/* ==========
+   HERO BG – möglichst nah an der Gutschein-Vorderseite
+   ========== */
+
+.bg-hero-radial {
+  background-color: var(--ana-green-dark);
+  background-image:
+    /* heller Schein unten rechts */
+    radial-gradient(
+      circle at 85% 95%,
+      #eafacb 0%,
+      var(--ana-green-soft-2) 32%,
+      transparent 70%
+    ),
+    /* weicher Verlauf obere Mitte / links */
+    radial-gradient(
+      circle at 20% 0%,
+      var(--ana-green-soft) 0%,
+      var(--ana-green-dark) 46%,
+      var(--ana-green-deep) 78%,
+      var(--ana-green-edge) 100%
+    );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-/* Bessere Links */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+/* Karten-Schatten wie auf der Seite */
+
+.shadow-card {
+  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.45);
 }
 
-/* Bessere Auswahlfarben */
-::selection {
-  background: #D2DDBC; /* green-serenity */
-  color: #1C3A19;      /* green-vitality */
+/* Navigation */
+
+.nav-link {
+  position: relative;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
 }
 
-/* Saubere Images */
-img {
-  max-width: 100%;
-  height: auto;
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  width: 0;
+  height: 1px;
+  background: rgba(250, 250, 250, 0.6);
+  transition: width 0.22s ease;
 }
 
-/* Utility: weiches Glow für Buttons & Cards */
-.shadow-soft {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  width: 100%;
+}
+
+/* ==========
+   ANIMATIONEN (von dir, leicht aufgeräumt)
+   ========== */
+
+@keyframes floaty {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(0.4deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.floaty {
+  animation: floaty 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Fade-Up */
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+.fade-up-delay-1 {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+.fade-up-delay-2 {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.fade-up-delay-3 {
+  opacity: 0;
+  animation: fade-up 0.7s ease-out forwards;
+  animation-delay: 0.45s;
+}
+
+/* Cards mit weichem Einstieg */
+
+@keyframes card-in {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card-in {
+  opacity: 0;
+  animation: card-in 0.7s ease-out forwards;
+}
+
+.card-in-delay-1 {
+  opacity: 0;
+  animation: card-in 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+.card-in-delay-2 {
+  opacity: 0;
+  animation: card-in 0.7s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.card-in-delay-3 {
+  opacity: 0;
+  animation: card-in 0.7s ease-out forwards;
+  animation-delay: 0.45s;
 }

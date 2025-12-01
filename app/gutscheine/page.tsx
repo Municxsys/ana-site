@@ -1,4 +1,3 @@
-// app/gutscheine/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -6,29 +5,16 @@ import { useState } from "react";
 const AMOUNTS = [20, 50, 100, 150];
 
 export default function GutscheinePage() {
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(50);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [selected, setSelected] = useState(50);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleDownload = async () => {
-    if (!selectedAmount) return;
-    setLoading(true);
-    setError(null);
-
+  async function handleDownload() {
     try {
-      const res = await fetch("/api/gutschein", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ amount: selectedAmount }),
-      });
+      setIsLoading(true);
+      const res = await fetch(`/api/gutschein?amount=${selected}`);
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(
-          data?.error || "Der Gutschein konnte nicht erstellt werden."
-        );
+        throw new Error("Download fehlgeschlagen");
       }
 
       const blob = await res.blob();
@@ -36,96 +22,89 @@ export default function GutscheinePage() {
 
       const link = document.createElement("a");
       link.href = url;
-      link.download = `gutschein-${selectedAmount}.pdf`;
+      link.download = `gutschein-${selected}.pdf`;
       document.body.appendChild(link);
       link.click();
       link.remove();
-
       URL.revokeObjectURL(url);
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message ?? "Unbekannter Fehler");
+    } catch (e) {
+      console.error(e);
+      alert("Leider ist etwas schiefgelaufen. Bitte versuch es später erneut.");
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
-  };
+  }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#80996f] to-[#5c7156] text-ink">
-      <div className="mx-auto max-w-4xl px-6 py-20">
-        {/* Titel / Intro */}
-        <header className="mb-10">
-          <p className="font-serif text-sm tracking-[0.25em] uppercase text-ink/60">
-            Ana Casarotti
-          </p>
-          <h1 className="mt-2 font-serif text-3xl sm:text-4xl text-neutral-sand">
-            Gutscheine verschenken
-          </h1>
-          <p className="mt-4 text-sm sm:text-base text-ink/70 max-w-xl">
-            Gönn deinen Liebsten eine Auszeit:
-            Maniküre, Pediküre &amp; medizinische Fußpflege – ganz bequem
-            als Gutschein zum Ausdrucken.
-          </p>
-        </header>
+    <main className="min-h-screen bg-hero-radial px-4 pt-28 pb-16 flex justify-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-center">
+        {/* Mini-Vorschau links */}
+        <div className="card-in">
+          <div className="relative w-full max-w-sm mx-auto aspect-[2/3] rounded-3xl overflow-hidden shadow-card bg-[var(--ana-cream)]">
+            <img
+              src="/images/gutschein-preview.png"
+              alt="Gutschein-Vorschau"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
 
-        {/* Auswahl-Card */}
-        <section className="rounded-3xl border border-green-vitality/20 bg-black/5 backdrop-blur-sm p-6 sm:p-8">
-          <h2 className="font-serif text-xl text-neutral-sand mb-4">
-            Gutscheinwert wählen
-          </h2>
+        {/* Auswahl rechts */}
+        <section className="card-in-delay-1 bg-black/10 backdrop-blur-sm rounded-3xl px-6 py-7 md:px-8 md:py-9 text-[var(--ana-cream)] shadow-card">
+          <header className="mb-5">
+            <p className="text-xs tracking-[0.2em] uppercase mb-2">
+              Ana Casarotti
+            </p>
+            <h1 className="text-2xl md:text-3xl font-semibold">
+              Gutschein schenken
+            </h1>
+            <p className="mt-2 text-sm text-[var(--ana-cream)]/85">
+              Wähle einen Betrag und lade den personalisierten Gutschein als PDF
+              herunter.
+            </p>
+          </header>
 
-          <p className="text-sm text-ink/70 mb-4">
-            Mindestwert: <span className="font-medium">20 €</span>. Wähle
-            einen der Beträge – der Wert wird automatisch in den Gutschein
-            eingetragen.
-          </p>
-
-          {/* Buttons für Beträge */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          {/* Buttons Beträge */}
+          <div className="mb-6 flex flex-wrap gap-3">
             {AMOUNTS.map((amount) => {
-              const active = selectedAmount === amount;
+              const active = amount === selected;
               return (
                 <button
                   key={amount}
                   type="button"
-                  onClick={() => setSelectedAmount(amount)}
-                  className={`rounded-full border px-4 py-2 text-sm font-medium transition
+                  onClick={() => setSelected(amount)}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold border transition
                     ${
                       active
-                        ? "border-green-vitality bg-neutral-sand text-green-vitality shadow-md"
-                        : "border-ink/20 bg-black/10 text-neutral-sand hover:border-green-vitality/60"
+                        ? "bg-[var(--ana-cream)] text-[var(--ana-green-dark)] border-transparent"
+                        : "bg-transparent border-[var(--ana-cream)]/40 text-[var(--ana-cream)] hover:bg-white/10"
                     }`}
                 >
-                  {amount} €
+                  € {amount},00
                 </button>
               );
             })}
           </div>
 
-          {/* Download-Button */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <button
-              type="button"
-              onClick={handleDownload}
-              disabled={loading || !selectedAmount}
-              className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium
-                         bg-neutral-sand text-green-vitality shadow-sm hover:bg-white
-                         disabled:opacity-60 disabled:cursor-not-allowed transition"
-            >
-              {loading ? "Gutschein wird erstellt …" : "Gutschein herunterladen"}
-            </button>
-
-            <p className="text-xs text-ink/60 max-w-sm">
-              Nach dem Download kannst du den Gutschein als{" "}
-              <span className="font-medium">PDF</span> speichern oder ausdrucken.
+          {/* Anzeige Wert – NICHT editierbar */}
+          <div className="mb-6">
+            <p className="text-xs uppercase tracking-[0.22em] mb-1">
+              Ausgewählter Wert
+            </p>
+            <p className="text-3xl font-semibold">
+              € {selected}
+              <span className="align-top text-base">,00</span>
             </p>
           </div>
 
-          {error && (
-            <p className="mt-4 text-xs text-red-300 bg-red-900/30 rounded-xl px-3 py-2">
-              {error}
-            </p>
-          )}
+          <button
+            type="button"
+            onClick={handleDownload}
+            disabled={isLoading}
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm font-semibold bg-[var(--ana-cream)] text-[var(--ana-green-dark)] shadow-card hover:bg-[var(--ana-cream)]/95 disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {isLoading ? "Wird erstellt …" : "Gutschein als PDF herunterladen"}
+          </button>
         </section>
       </div>
     </main>

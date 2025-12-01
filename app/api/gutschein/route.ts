@@ -1,82 +1,58 @@
-// app/api/gutschein/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
-import fs from "fs/promises";
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import fs from "fs";
 import path from "path";
 
-const ALLOWED_AMOUNTS = [20, 50, 100, 150];
-
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
-    const body = await req.json();
-    const rawAmount = body?.amount;
+    const { searchParams } = new URL(req.url);
+    const amountParam = searchParams.get("amount");
 
-    const numericAmount = Number(
-      typeof rawAmount === "string"
-        ? rawAmount.replace(",", ".")
-        : rawAmount
-    );
-
-    if (!Number.isFinite(numericAmount)) {
-      return NextResponse.json({ error: "Ungültiger Betrag." }, { status: 400 });
+    if (!amountParam) {
+      return new NextResponse("amount missing", { status: 400 });
     }
 
-    if (!ALLOWED_AMOUNTS.includes(numericAmount)) {
-      return NextResponse.json(
-        { error: "Erlaubte Werte: 20 €, 50 €, 100 €, 150 €." },
-        { status: 400 }
-      );
+    const numericAmount = parseInt(amountParam, 10);
+
+    if (![20, 50, 100, 150].includes(numericAmount)) {
+      return new NextResponse("invalid amount", { status: 400 });
     }
 
-    // PDF-Vorlage laden
+    // Vorlage laden (2-seitiges PDF wie dein Screenshot)
     const templatePath = path.join(
       process.cwd(),
       "public",
       "pdfs",
       "gutschein-vorlage.pdf"
     );
+    const templateBytes = fs.readFileSync(templatePath);
 
-    const templateBytes = await fs.readFile(templatePath);
-
-    // PDF öffnen
     const pdfDoc = await PDFDocument.load(templateBytes);
-
-    // *** WICHTIG: Seite 2 auswählen ***
     const pages = pdfDoc.getPages();
-    const page = pages[1]; // Seite 2 (index 1)
 
-    const { width, height } = page.getSize();
+    // zweite Seite, dort steht "Wert" usw.
+    const backPage = pages[1];
+    const { width, height } = backPage.getSize();
 
-    // Betrag formatieren
     const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-    const amountLabel =
-      "€ " +
-      numericAmount.toLocaleString("de-DE", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
+    const display = `€ ${numericAmount},00`;
+    const fontSize = 32;
+    const textWidth = font.widthOfTextAtSize(display, fontSize);
 
-    const fontSize = 24;
-    const textWidth = font.widthOfTextAtSize(amountLabel, fontSize);
-
-    // Basierend auf deinem Screenshot geschätzt:
-    const x = (width - textWidth) / 2;
-    const y = height * 0.56; // << hier sitzt "WERT:" → tunen wir dann
-
-    page.drawText(amountLabel, {
-      x,
-      y,
+    backPage.drawText(display, {
+      x: width / 2 - textWidth / 2,
+      y: height * 0.47, // mittig im Wert-Block
       size: fontSize,
-      font,
-      color: rgb(0.08, 0.3, 0.22),
+      color: rgb(0.07, 0.33, 0.12), // dunkles Grün wie Brand
     });
 
-    // Speichern
     const pdfBytes = await pdfDoc.save();
-    const pdfBlob = new Blob([new Uint8Array(pdfBytes)], { type: "application/pdf" });
 
-    return new NextResponse(pdfBlob, {
+    // Buffer aus Uint8Array erstellen für NextResponse
+    const pdfBuffer = Buffer.from(pdfBytes);
+
+    return new NextResponse(pdfBuffer, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
@@ -85,9 +61,6 @@ export async function POST(req: NextRequest) {
     });
   } catch (err) {
     console.error(err);
-    return NextResponse.json(
-      { error: "Fehler beim Erstellen des Gutscheins." },
-      { status: 500 }
-    );
+    return new NextResponse("PDF error", { status: 500 });
   }
 }
