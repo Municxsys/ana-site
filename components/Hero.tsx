@@ -42,8 +42,8 @@ export default function Hero() {
           <Image
             src="/images/ana-logo-icon.png"
             alt="Ana Casarotti Icon"
-            width={1599}
-            height={899}
+            width={180}
+            height={180}
             priority
             className="w-full h-auto select-none"
           />
