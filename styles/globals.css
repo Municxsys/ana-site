@@ -8,18 +8,23 @@
 
 :root {
   /* Palette aus Brandbook */
-  --ana-green-soft: #8f9e72;   /* 2. Reihe rechts */
+  --ana-green-soft: #8f9e72;      /* 2. Reihe rechts */
   --ana-green-soft-2: #a6b588;
-  --ana-green-dark: #295824;   /* 4. Reihe, zweites Feld */
-  --ana-green-deep: #10320d;   /* 4. Reihe, viertes Feld */
-  --ana-green-edge: #031f01;   /* 4. Reihe, letztes Feld */
-  --ana-cream: #f7f2e7;        /* Gutschein-Rückseite, angenähert */
-  --ana-accent-gold: #ae6f38;  /* Braune Reihe, Mitte */
+  --ana-green-dark: #295824;      /* 4. Reihe, zweites Feld */
+  --ana-green-deep: #10320d;      /* 4. Reihe, viertes Feld */
+  --ana-green-edge: #031f01;      /* 4. Reihe, letztes Feld */
+  --ana-cream: #f7f2e7;           /* Gutschein-Rückseite, angenähert */
+  --ana-accent-gold: #ae6f38;     /* Braune Reihe, Mitte (für Buttons etc., NICHT Navi) */
 
   --ana-text-light: #fdfaf5;
+
+  /* helle Hover-Farbe für Navigation */
+  --ana-nav-hover: #eafacb;
 }
 
-/* Basislayout */
+/* ==========
+   BASISLAYOUT & FONTS
+   ========== */
 
 html,
 body,
@@ -27,12 +32,24 @@ body,
   height: 100%;
 }
 
+/* DM Sans kommt als CSS-Variable --font-body aus layout.tsx
+   Playfair Display als --font-heading */
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
+  font-family: var(--font-body, system-ui, -apple-system, BlinkMacSystemFont,
+      "SF Pro Text", "Segoe UI", sans-serif);
   color: var(--ana-text-light);
   background-color: var(--ana-green-dark);
+}
+
+/* Hilfsklassen, falls du explizit steuern willst */
+.body-sans {
+  font-family: var(--font-body, system-ui, -apple-system, BlinkMacSystemFont,
+      "SF Pro Text", "Segoe UI", sans-serif);
+}
+
+.heading-serif {
+  font-family: var(--font-heading, "Times New Roman", serif);
 }
 
 /* ==========
@@ -67,15 +84,19 @@ body {
   box-shadow: 0 26px 55px rgba(0, 0, 0, 0.45);
 }
 
-/* Navigation */
+/* ==========
+   NAVIGATION
+   ========== */
 
 .nav-link {
   position: relative;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   font-size: 0.72rem;
+  color: var(--ana-cream);           /* Standard: hell/creme */
 }
 
+/* Unterstreichung */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -92,8 +113,13 @@ body {
   width: 100%;
 }
 
+/* Textfarbe beim Hover – helles Grün/Cream statt Terracotta */
+.nav-link:hover {
+  color: var(--ana-nav-hover);
+}
+
 /* ==========
-   ANIMATIONEN (von dir, leicht aufgeräumt)
+   ANIMATIONEN
    ========== */
 
 @keyframes floaty {
