@@ -5,94 +5,115 @@ import { motion } from "framer-motion";
 
 export default function UberMichContent() {
   return (
-    <section
-      className="
-        relative w-full min-h-screen
-        bg-hero-radial
-        px-4 pt-32 pb-24
-        flex items-center
-      "
-    >
-      {/* Soft Overlay */}
-      <div className="absolute inset-0 bg-black/10 z-0" />
+    <section className="relative w-full min-h-screen bg-hero-radial">
+      {/* ── Header: Uniformbild (oben) ─────────────────────────────── */}
+      <div className="relative h-[38vh] md:h-[44vh]">
+        <Image
+          src="/images/hero-ana-uniform.jpg"
+          alt="Berufskleidung – Ana Casarotti"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* dezentes Vignette/Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/0 to-black/0" />
+      </div>
 
-      <div
-        className="
-          relative z-10 w-full max-w-6xl mx-auto
-          grid md:grid-cols-2 gap-16 items-center
-        "
-      >
-        {/* TEXTBLOCK */}
+      {/* ── Content: grüner Bereich mit überlappendem Portrait ─────── */}
+      <div className="relative px-4 pb-24">
+        {/* Portrait-Kreis, überlappt die Trennkante */}
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex flex-col gap-6"
+          initial={{ opacity: 0, y: 12, scale: 0.98 }}
+          animate={{ opacity: 1, y: -32, scale: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="
+            absolute left-1/2 -translate-x-1/2 -top-16
+            h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56
+            rounded-full shadow-card overflow-hidden ring-4 ring-white/30
+          "
+          aria-hidden
         >
-          <h1
+          <Image
+            src="/images/ana-portrait.jpg"
+            alt="Portrait von Ana Casarotti"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
+
+        {/* Textblock */}
+        <div
+          className="
+            relative z-10 max-w-3xl mx-auto
+            pt-28 sm:pt-32 md:pt-36
+            text-center
+          "
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
             className="
-              heading-serif text-4xl sm:text-5xl font-semibold
-              text-[var(--ana-cream)]
+              font-serif text-[44px] sm:text-5xl md:text-[64px]
+              leading-tight text-[var(--ana-cream)]
             "
           >
             Über mich
-          </h1>
+          </motion.h1>
 
-          <p className="text-base sm:text-lg leading-relaxed text-[var(--ana-cream)]/90">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
+            className="mt-6 text-base sm:text-lg leading-relaxed text-[var(--ana-cream)]/90"
+          >
             Mein Name ist Ana Casarotti und ich bin mobile medizinische
             Fußpflegerin aus Leidenschaft. Meine Arbeit verbindet für mich
-            Präzision, Wohlbefinden und Fürsorge – denn gepflegte Füße bedeuten
-            nicht nur ein schönes Gefühl, sondern auch Lebensqualität.
-          </p>
+            Präzision, Wohlbefinden und Fürsorge – denn gepflegte Füße
+            bedeuten nicht nur ein schönes Gefühl, sondern auch Lebensqualität.
+          </motion.p>
 
-          <p className="text-base sm:text-lg leading-relaxed text-[var(--ana-cream)]/85">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.18 }}
+            className="mt-5 text-base sm:text-lg leading-relaxed text-[var(--ana-cream)]/85"
+          >
             Ich komme zu Ihnen nach Hause, damit Sie Ihre Behandlung in einer
             vertrauten und entspannten Umgebung erleben können. Besonders für
             ältere Menschen, Diabetiker:innen oder Kund:innen mit
             Bewegungseinschränkungen ist dieser Service ideal.
-          </p>
+          </motion.p>
 
-          <p className="text-base sm:text-lg leading-relaxed text-[var(--ana-cream)]/85">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.24 }}
+            className="mt-5 text-base sm:text-lg leading-relaxed text-[var(--ana-cream)]/85"
+          >
             Hygienestandards, hochwertige Produkte und eine ruhige, angenehme
             Atmosphäre stehen bei mir im Mittelpunkt. Jeder Termin wird
             individuell auf Ihre Bedürfnisse abgestimmt.
-          </p>
+          </motion.p>
 
+          {/* CTA */}
           <motion.a
             href="/kontakt"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.32 }}
             className="
-              mt-4 inline-flex items-center justify-center
+              mt-8 inline-flex items-center justify-center
               rounded-full px-10 py-3
               text-sm sm:text-base font-semibold
               bg-[var(--ana-cream)] text-[var(--ana-green-dark)]
               shadow-card hover:bg-[var(--ana-cream)]/90 transition
             "
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.6 }}
           >
             Termin vereinbaren
           </motion.a>
-        </motion.div>
-
-        {/* PORTRAIT */}
-        <motion.div
-          initial={{ opacity: 0, x: 28 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
-          className="
-            relative w-full aspect-[4/5] rounded-3xl overflow-hidden
-            shadow-card bg-[var(--ana-green-soft)]/30
-            max-w-sm mx-auto
-          "
-        >
-          <Image
-            src="/images/ana-portrait.jpg"
-            alt="Ana Casarotti Portrait"
-            fill
-            className="object-cover"
-          />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
