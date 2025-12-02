@@ -1,18 +1,20 @@
 // app/kontakt/page.tsx
-
+import type { Metadata } from "next";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import Kontakt from "@/components/Kontakt";
+import KontaktContent from "./KontaktContent";
 
-export const dynamic = "force-static";
+export const metadata: Metadata = {
+  title: "Kontakt & Termin",
+  description:
+    "Kontaktieren Sie Ana Casarotti für Termine zur mobilen medizinischen Fußpflege, Maniküre und Pediküre in Köln und Umgebung.",
+};
 
 export default function KontaktPage() {
   return (
-    <main className="min-h-screen bg-neutral-sand">
+    <main className="relative min-h-screen bg-[var(--ana-cream)]">
       <NavBar />
-      <div className="pt-24 pb-16 px-4">
-        <Kontakt />
-      </div>
+      <KontaktContent />
       <Footer />
     </main>
   );
