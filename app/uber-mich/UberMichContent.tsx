@@ -27,10 +27,10 @@ export default function UberMichContent() {
           animate={{ opacity: 1, y: -32, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="
-            absolute left-1/2 -translate-x-1/2 -top-16
-            h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56
-            rounded-full shadow-card overflow-hidden ring-4 ring-white/30
-          "
+           absolute left-1/2 -translate-x-1/2 -top-24
+           h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56
+           rounded-full shadow-card overflow-hidden ring-4 ring-white/30
+           "
           aria-hidden
         >
           <Image
@@ -46,7 +46,7 @@ export default function UberMichContent() {
         <div
           className="
             relative z-10 max-w-3xl mx-auto
-            pt-28 sm:pt-32 md:pt-36
+            pt-40 sm:pt-48 md:pt-56
             text-center
           "
         >
