@@ -21,26 +21,25 @@ export default function UberMichContent() {
 
       {/* ── Content: grüner Bereich mit überlappendem Portrait ─────── */}
       <div className="relative px-4 pb-24">
-        {/* Portrait-Kreis, überlappt die Trennkante */}
+        {/* Portrait zentriert */}
         <motion.div
-          initial={{ opacity: 0, y: 12, scale: 0.98 }}
-          animate={{ opacity: 1, y: -32, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="
-           absolute left-1/2 -translate-x-1/2 -top-24
-           h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56
-           rounded-full shadow-card overflow-hidden ring-4 ring-white/30
-           "
-          aria-hidden
-        >
-          <Image
-            src="/images/ana-portrait.jpg"
-            alt="Portrait von Ana Casarotti"
-            fill
-            className="object-cover"
-            priority
-          />
-        </motion.div>
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease:
+        "easeOut" }}
+        className="w-full flex justify-center
+        -mt-20" 
+>
+  <div className="h-40 w-40 rounded-full overflow-hidden shadow-card ring-4 ring-white/30">
+    <Image
+      src="/images/ana-portrait.jpg"
+      alt="Ana Casarotti Portrait"
+      fill
+      className="object-cover"
+      priority
+    />
+  </div>
+</motion.div>
 
         {/* Textblock */}
         <div
