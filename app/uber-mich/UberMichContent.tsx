@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function UberMichContent() {
   return (
-    <section className="relative w-full bg-hero-radial overflow-hidden">
+    <section className="relative w-full bg-hero-radial overflow-hidden pt-20">
 
       {/* ─────────────────────────────────── */}
       {/* OBERER BEREICH: FULL-WIDTH UNIFORM  */}
