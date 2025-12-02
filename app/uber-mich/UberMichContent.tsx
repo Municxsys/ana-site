@@ -20,13 +20,14 @@ export default function UberMichContent() {
 
       {/* GRÜNER BEREICH + PORTRAIT + TEXT */}
       <div className="relative w-full max-w-5xl mx-auto px-4 pb-24">
-        {/* Portrait-Kreis, zentriert mit Flexbox */}
+      {/* Portrait-Kreis, zentriert mit Flexbox */}
         <div className="flex justify-center">
           <motion.div
             initial={{ opacity: 0, y: 16, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="
+              relative              /* ← WICHTIG */
               -mt-20 sm:-mt-24
               h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56
               rounded-full overflow-hidden shadow-card
