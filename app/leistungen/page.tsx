@@ -7,7 +7,7 @@ import LeistungenContent from "./LeistungenContent";
 export const metadata: Metadata = {
   title: "Leistungen",
   description:
-    "Übersicht der Behandlungen von Ana Casarotti – medizinische Fußpflege, Maniküre, Pediküre und Shellac-Behandlungen in Köln.",
+    "Übersicht der Behandlungen von Ana Casarotti – mobile Fußpflege, Maniküre, Pediküre und Shellac-Behandlungen in Köln.",
 };
 
 export default function LeistungenPage() {
