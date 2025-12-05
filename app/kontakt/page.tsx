@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Kontakt & Termin",
   description:
-    "Kontaktieren Sie Ana Casarotti für Termine zur medizinischen Fußpflege, Maniküre und Pediküre in Köln und Umgebung.",
+    "Kontaktieren Sie Ana Casarotti für Termine zur mobilen Fußpflege, Maniküre und Pediküre in Köln und Umgebung.",
 };
 
 export default function KontaktPage() {
@@ -106,3 +106,4 @@ export default function KontaktPage() {
     </main>
   );
 }
+
