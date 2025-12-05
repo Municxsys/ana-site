@@ -20,14 +20,14 @@ export default function UberMichContent() {
 
       {/* GRÜNER BEREICH + PORTRAIT + TEXT */}
       <div className="relative w-full max-w-5xl mx-auto px-4 pb-24">
-      {/* Portrait-Kreis, zentriert mit Flexbox */}
+        {/* Portrait-Kreis, zentriert mit Flexbox */}
         <div className="flex justify-center">
           <motion.div
             initial={{ opacity: 0, y: 16, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="
-              relative              /* ← WICHTIG */
+              relative
               -mt-20 sm:-mt-24
               h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56
               rounded-full overflow-hidden shadow-card
@@ -44,7 +44,7 @@ export default function UberMichContent() {
           </motion.div>
         </div>
 
-        {/* TEXTBLOCK – wie auf deinem Beispiel */}
+        {/* TEXTBLOCK */}
         <div className="mt-10 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
@@ -66,11 +66,11 @@ export default function UberMichContent() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
             className="mt-6 text-base sm:text-lg leading-relaxed text-[var(--ana-cream)]/90"
           >
-            Mein Name ist Ana Casarotti und ich bin mobile medizinische
-            Fußpflegerin aus Leidenschaft. Meine Arbeit verbindet für mich
-            Präzision, Wohlbefinden und Fürsorge – denn gepflegte Füße
-            bedeuten nicht nur ein schönes Gefühl, sondern auch
-            Lebensqualität.
+            Mein Name ist Ana Casarotti und ich biete mobile Fußpflege,
+            Maniküre und Pediküre mit viel Herz und Sorgfalt an.
+            Meine Arbeit verbindet für mich Präzision, Wohlbefinden
+            und Fürsorge – denn gepflegte Füße und Hände bedeuten
+            nicht nur ein schönes Gefühl, sondern auch Lebensqualität.
           </motion.p>
 
           <motion.p
@@ -91,9 +91,10 @@ export default function UberMichContent() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
             className="mt-5 text-base sm:text-lg leading-relaxed text-[var(--ana-cream)]/85"
           >
-            Hygienestandards, hochwertige Produkte und eine ruhige, angenehme
-            Atmosphäre stehen bei mir im Mittelpunkt. Jeder Termin wird
-            individuell auf Ihre Bedürfnisse abgestimmt.
+            Hygienestandards, sorgfältige Arbeitsweise und eine ruhige,
+            angenehme Atmosphäre stehen bei mir im Mittelpunkt. Meine Angebote
+            sind pflegeorientiert und kosmetisch ausgerichtet und ersetzen
+            keine podologische oder ärztliche Behandlung.
           </motion.p>
 
           <motion.a
