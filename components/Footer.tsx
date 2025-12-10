@@ -20,7 +20,7 @@ export default function Footer() {
       >
         {/* Copyright */}
         <p className="text-center md:text-left font-light tracking-wide">
-          © 2025 Ana Casarotti – Medizinische Fußpflege & Kosmetik
+          © 2025 Ana Casarotti – Mobile Fußpflege & Kosmetik
         </p>
 
         {/* Links */}
