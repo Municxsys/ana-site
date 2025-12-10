@@ -41,7 +41,7 @@ export default function Hero() {
         >
           {/* Screenreader-H1 */}
           <h1 className="sr-only">
-            Ana Casarotti – Medizinische Fußpflege, Maniküre & Pediküre Köln
+            Ana Casarotti – Mobile Fußpflege, Maniküre & Pediküre Köln
           </h1>
 
           {/* Logo Icon – jetzt präzise skaliert */}
@@ -107,7 +107,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.55, duration: 0.6 }}
           >
-            Mobile medizinische Fußpflege, Maniküre & Pediküre in Köln und Umgebung.
+            Mobile Fußpflege, Maniküre & Pediküre in Köln und Umgebung.
           </motion.p>
         </div>
 
