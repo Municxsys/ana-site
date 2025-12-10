@@ -21,8 +21,8 @@ export default function About() {
           </h2>
 
           <p className="text-sm sm:text-base text-ink/80 leading-relaxed mb-4">
-            Mein Name ist Ana Casarotti und ich bin ausgebildete Fußpflegerin
-            mit Schwerpunkt auf medizinischer und kosmetischer Fußpflege.
+            Mein Name ist Ana Casarotti und ich bin Fußpflegerin
+            mit Schwerpunkt auf mobiler und kosmetischer Fußpflege.
             Mir ist wichtig, dass Sie sich bei mir nicht nur gut versorgt,
             sondern auch wirklich wohlfühlen.
           </p>
@@ -35,7 +35,7 @@ export default function About() {
           </p>
 
           <p className="text-sm sm:text-base text-ink/80 leading-relaxed">
-            Ob regelmäßige medizinische Fußpflege, eine wohltuende Pediküre
+            Ob regelmäßige mobile Fußpflege, eine wohltuende Pediküre
             oder eine gepflegte Maniküre: Ich nehme mir Zeit für Ihre Fragen
             und berate Sie individuell zu Pflege und Vorbeugung.
           </p>
