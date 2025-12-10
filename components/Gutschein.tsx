@@ -17,7 +17,7 @@ export default function Gutschein() {
           img="/images/gutschein.jpg"
         >
           <p className="text-green-harmony leading-relaxed">
-            Ob für medizinische Fußpflege, Maniküre, Pediküre oder Wellness –
+            Ob für mobile Fußpflege, Maniküre, Pediküre oder Wellness –
             ein Gutschein ist immer eine liebevolle und hilfreiche Geschenkidee.
           </p>
 
@@ -46,7 +46,7 @@ export default function Gutschein() {
         >
           <ul className="list-disc space-y-1 pl-5 text-green-harmony">
             <li>Wellness-Maniküre + Pediküre</li>
-            <li>Medizinische Fußpflege + Paraffinbehandlung</li>
+            <li>Mobile Fußpflege + Paraffinbehandlung</li>
             <li>Shellac-Behandlung für Hände oder Füße</li>
           </ul>
 
